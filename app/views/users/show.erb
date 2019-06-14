@@ -1,0 +1,8 @@
+<h2><%= @user.username %></h2>
+<br>
+<h3>Mashes:</h3>
+<ul>
+  <% @user.mashes.each do |mash| %>
+    <li><%= mash.name %></li>
+  <% end %>
+</ul>
