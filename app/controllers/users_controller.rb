@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   get "/signup" do
     if session[:user_id]
-      redirect "/mashes"
+      redirect "/new"
     else
       erb :'users/signup'
     end
