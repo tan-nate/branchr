@@ -1,0 +1,7 @@
+<h2>Welcome, <%= @user.username %></h2>
+<h3>All mashes:</h3>
+<ul>
+  <% @mashes.each do |mash| %>
+    <li><%= mash.name %></li>
+  <% end %>
+</ul>
