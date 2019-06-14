@@ -1,3 +1,3 @@
 class Category < ActiveRecord::Base
-  has_many :mashes
+  has_many :words, through: :mashes
 end
