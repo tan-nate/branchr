@@ -19,11 +19,12 @@ ActiveRecord::Schema.define(version: 20190614160928) do
 
   create_table "mashes", force: :cascade do |t|
     t.string  "name"
-    t.string  "half1"
-    t.string  "half2"
     t.integer "category_id"
     t.integer "user_id"
+    t.integer "whole_id"
   end
+
+  add_index "mashes", ["whole_id"], name: "index_mashes_on_whole_id"
 
   create_table "users", force: :cascade do |t|
     t.string "username"
