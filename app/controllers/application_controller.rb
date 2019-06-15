@@ -8,8 +8,8 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "bigboi_2525"
   end
 
-  get "/" do
-    "mashr"
+  get '/' do
+    redirect '/mashes/new'
   end
 
   helpers do

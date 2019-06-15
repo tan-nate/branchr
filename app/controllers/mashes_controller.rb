@@ -3,7 +3,7 @@ class MashesController < ApplicationController
     if logged_in?
       erb :'mashes/index'
     else
-      redirect "/login"
+      redirect '/login'
     end
   end
 
