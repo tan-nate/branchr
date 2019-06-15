@@ -1,13 +1,21 @@
 class MashesController < ApplicationController
   get '/mashes/new' do
     if logged_in?
-      erb :'mashes/index'
+      erb :'mashes/new'
     else
       redirect '/login'
     end
   end
 
   post '/mashes' do
-    half1 = Mash.find_or_create_by(name: params[])
+    @half1 = Mash.create(name: params[:half1], user: current_user)
+    @half2 = Mash.create(name: params[:half2], user: current_user)
+    mash = Mash.create(name: params[:whole], user: current_user)
+    mash.halves << @half1
+    mash.halves << @half2
+
+    @mashes = current_user.mashes.collect {|mash| mash.name}
+
+    erb :'mashes/new'
   end
 end
