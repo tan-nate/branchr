@@ -1,9 +1,16 @@
 natedogg = User.create(username: "natedogg", password: "whatup")
 
-chair = Mash.create(name: "chair", user: natedogg)
-couch = Mash.create(name: "couch", user: natedogg)
-furniture = Category.create(name: "furniture")
+furniture = Tree.create(name: furniture, user: natedogg)
 
-sofa = Mash.create(name: "sofa", category: furniture, user: natedogg)
-sofa.halves << chair
-sofa.halves << couch
+chair = Branch.create(name: "chair", tree: furniture)
+couch = Branch.create(name: "couch", tree: furniture)
+
+sofa = Branch.create(name: "sofa", tree: furniture)
+sofa.children << chair
+sofa.children << couch
+
+living_room = Branch.create(name: "living room", tree: furniture)
+table = Branch.create(name: "table", tree: furniture)
+
+living_room.children << sofa
+living_room.children << table
