@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   get '/signup' do
     if session[:user_id]
-      redirect '/new'
+      redirect '/mashes/new'
     else
       erb :'users/signup'
     end
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 	  if user.username? && user.password_digest?
       user.save
       session[:user_id] = user.id
-	    redirect '/mashes'
+	    redirect '/mashes/new'
     else
       redirect '/signup'
       # Include flash message stating what went wrong
@@ -41,10 +41,5 @@ class UsersController < ApplicationController
   get '/logout' do
     session.clear
     redirect '/login'
-  end
-
-  get '/users/:slug' do
-    @user = User.find_by_slug(params[:slug])
-    erb :'users/show'
   end
 end
