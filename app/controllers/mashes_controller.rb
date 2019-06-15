@@ -17,6 +17,9 @@ class MashesController < ApplicationController
   end
 
   post '/mashes' do
+    binding.pry
+    @whole_mashes = []
+    @half_mashes = []
     current_user.mashes.each do |mash|
       if mash.whole
         @whole_mashes << mash

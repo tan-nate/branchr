@@ -1,6 +1,15 @@
 <form action='/mashes' method="post">
   <% @whole_mashes.each do |mash| %>
-    <input type="text" name="mash[]" placeholder="<%= mash %>"> = <input type="text" name="mash[][half1]"> + <input type="text" name="mash[][half2]"><br>
+    <input type="text" name="mash" value="<%= mash.name %>" readonly> = <input type="text" name="mash[half1]"> + <input type="text" name="mash[half2]"><br>
   <% end %>
+  <br>
+  <br>
+  <% @half_mashes.each do |mash| %>
+    <input type="text" name="mash"> = <input type="text" name="mash[half1]" value="<%= mash.name %>" readonly> + <input type="text" name="mash[half2]"><br>
+  <% end %>
+  <br>
+  <br>
+  <input type="text" name="mash"> = <input type="text" name="mash[half1]"> + <input type="text" name="mash[half2]"><br>
+  <br>
   <input type="submit" value="mash">
 </form>
