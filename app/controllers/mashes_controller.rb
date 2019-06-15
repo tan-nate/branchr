@@ -21,13 +21,12 @@ class MashesController < ApplicationController
   end
 
   post '/mashes' do
-    half1 = Mash.new(name: params[:half1], user: current_user)
-    half2 = Mash.new(name: params[:half2], user: current_user)
-    mash = Mash.new(name: params[:mash], user: current_user)
+    half1 = Mash.create(name: params[:half1], user: current_user)
+    half2 = Mash.create(name: params[:half2], user: current_user)
+    mash = Mash.create(name: params[:mash], user: current_user)
     mash.halves << half1
     mash.halves << half2
 
-    binding.pry
     erb :'mashes/new'
   end
 end
