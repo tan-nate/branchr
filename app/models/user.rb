@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
-  has_many :mashes
+  has_many :trees
   has_many :votes
 
   def slug
