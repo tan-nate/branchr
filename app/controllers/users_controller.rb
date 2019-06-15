@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   get '/login' do
     if logged_in?
-      redirect '/mashes'
+      redirect '/mashes/new'
     else
       erb :'users/login'
     end
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     user = User.find_by(username: params[:username])
 	  if user && user.authenticate(params[:password])
 	    session[:user_id] = user.id
-	    redirect '/mashes'
+	    redirect '/mashes/new'
 	  else
 	    redirect '/login'
       # Include flash message stating what went wrong

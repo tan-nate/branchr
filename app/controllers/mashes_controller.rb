@@ -1,7 +1,15 @@
 class MashesController < ApplicationController
   get '/mashes/new' do
     if logged_in?
-      @user = current_user
+      @whole_mashes = []
+      @half_mashes = []
+      current_user.mashes.each do |mash|
+        if mash.whole
+          @whole_mashes << mash
+        else
+          @half_mashes << mash
+        end
+      end
       erb :'mashes/new'
     else
       redirect '/login'
@@ -9,9 +17,13 @@ class MashesController < ApplicationController
   end
 
   post '/mashes' do
-    @whole_mashes = current_user.mashes.collect {|mash| mash.name if !mash.whole}
-    @half_mashes = current_user.mashes.collect {|mash| mash.name if mash.whole}
-
+    current_user.mashes.each do |mash|
+      if mash.whole
+        @whole_mashes << mash
+      else
+        @half_mashes << mash
+      end
+    end
     erb :'mashes/new'
   end
 end
