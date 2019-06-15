@@ -10,18 +10,15 @@ class Branch < ActiveRecord::Base
     end
   end
 
-  def self.branch_hash
-    hash = {}
-    origin = Branch.origin
+  ## taken from https://github.com/stefankroes/ancestry/blob/master/lib/ancestry/class_methods.rb
+  def self.arrange_nodes(nodes)
+    node_ids = Set.new(nodes.map(&:id))
+    index = Hash.new { |h, k| h[k] = {} }
 
-    hash[origin] = {}
-    origin.children.each do |child|
-      hash[origin][child] = {}
-      child.children.each do |grandchild|
-        hash[origin][child][grandchild] = {}
-      end
+    nodes.each_with_object({}) do |node, arranged|
+      children = index[node.id]
+      index[node.parent_id][node] = children
+      arranged[node] = children unless node_ids.include?(node.parent_id)
     end
-
-    hash
   end
 end
