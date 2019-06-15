@@ -3,7 +3,7 @@
   <input type="submit" value="mash">
   <% if !@user.mashes.empty? %>
     <ul>
-      <% @mashes.each do |mash| %>
+      <% @user.mashes.each do |mash| %>
         <li><%= mash.name %></li>
       <% end %>
     </ul>

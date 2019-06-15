@@ -1,6 +1,7 @@
 class MashesController < ApplicationController
   get '/mashes/new' do
     if logged_in?
+      @user = current_user
       erb :'mashes/new'
     else
       redirect '/login'
@@ -8,6 +9,8 @@ class MashesController < ApplicationController
   end
 
   post '/mashes' do
+    @user = current_user
+
     @half1 = Mash.create(name: params[:half1], user: current_user)
     @half2 = Mash.create(name: params[:half2], user: current_user)
     mash = Mash.create(name: params[:whole], user: current_user)
