@@ -9,7 +9,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    redirect '/mashes/new'
+    redirect '/branches/new'
   end
 
   helpers do
@@ -19,6 +19,19 @@ class ApplicationController < Sinatra::Base
 
     def current_user
       User.find(session[:user_id])
+    end
+
+    def hash_to_html key,value
+       if value.nil?
+         puts "<li>#{key}</li>"
+       elsif value.is_a?(Hash)
+         puts "<li>#{key}"
+         puts "<ul>"
+         value.each(&method(:hash_to_html))
+         puts "</ul></li>"
+       else
+         fail "I don't know what to do with a #{value.class}"
+       end
     end
   end
 end

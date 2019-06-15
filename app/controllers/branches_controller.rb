@@ -5,6 +5,7 @@ class BranchesController < ApplicationController
 
   get '/branches/new' do
     if logged_in?
+      @tree = Branch.arrange_nodes(Branch.all)
       erb :'branches/new'
     else
       redirect '/login'
