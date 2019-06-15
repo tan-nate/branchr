@@ -9,15 +9,8 @@ class MashesController < ApplicationController
   end
 
   post '/mashes' do
-    @user = current_user
-    
-    @half1 = Mash.create(name: params[:half1], user: current_user)
-    @half2 = Mash.create(name: params[:half2], user: current_user)
-    mash = Mash.create(name: params[:whole], user: current_user)
-    mash.halves << @half1
-    mash.halves << @half2
-
-    @mashes = current_user.mashes.collect {|mash| mash.name}
+    @whole_mashes = current_user.mashes.collect {|mash| mash.name if !mash.whole}
+    @half_mashes = current_user.mashes.collect {|mash| mash.name if mash.whole}
 
     erb :'mashes/new'
   end

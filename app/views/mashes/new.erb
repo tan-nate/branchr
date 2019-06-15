@@ -1,21 +1,6 @@
 <form action='/mashes' method="post">
-  <% if @half1 %>
-    <input type="text" name="whole" value="<%= @half1.name %>"> = <input type="text" name="half1[half1]"> + <input type="text" name="half1[half2]"><br>
+  <% @whole_mashes.each do |mash| %>
+    <input type="text" name="mash[]" placeholder="<%= mash %>"> = <input type="text" name="mash[][half1]"> + <input type="text" name="mash[][half2]"><br>
   <% end %>
-
-  <% if @half2 %>
-    <input type="text" name="whole" value="<%= @half2.name %>"> = <input type="text" name="half2[half1]"> + <input type="text" name="half2[half2]"><br>
-  <% end %>
-
-  <br><input type="text" name="whole" placeholder="sofa"> = <input type="text" name="half1" placeholder="chair"> + <input type="text" name="half2" placeholder="couch">
-
   <input type="submit" value="mash">
 </form>
-
-<% if !@user.mashes.empty? %>
-  <ul>
-    <% @user.mashes.each do |mash| %>
-      <li><%= mash.name %></li>
-    <% end %>
-  </ul>
-<% end %>
