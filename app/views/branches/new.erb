@@ -1,10 +1,9 @@
-<h1>mashr</h1>
+<h1>branchr</h1>
 
-<form action='/branches/new' method="post">
-  <input type="text" name="parent"> = <input type="text" name="child1"> + <input type="text" name="child2">
-  <br>
+<form action='/branches/new' method="post" style="position: relative;">
+  <input type="text" name="parent"> < <input type="text" name="child1" style="position: absolute; top: -30px;"> <input type="text" name="child2" style="position: absolute; top: 30px;">
   <br>
   <input type="submit" value="branch">
 </form>
-
+<br>
 <%= @tree %>
