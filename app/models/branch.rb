@@ -10,6 +10,20 @@ class Branch < ActiveRecord::Base
     end
   end
 
+  def self.branch_names
+    self.all.collect do |branch|
+      branch.name
+    end
+  end
+
+  # from https://stackoverflow.com/questions/8748475/iterate-over-a-deeply-nested-level-of-hashes-in-ruby/21432969
+  def self.save_pair(parent, myHash)
+    myHash.each {|key, value|
+      value.is_a?(Hash) ? save_pair(key, value) :
+              puts("parent=#{parent.nil? ? 'none':parent}, (#{key}, #{value})")
+    }
+  end
+
   ## taken from https://github.com/stefankroes/ancestry/blob/master/lib/ancestry/class_methods.rb
   def self.arrange_nodes(nodes)
     node_ids = Set.new(nodes.map(&:id))
