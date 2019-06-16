@@ -1,5 +1,4 @@
 class Hash
-
   # from https://gist.github.com/chastell/1196800
   def to_html
     [
