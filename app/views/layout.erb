@@ -16,6 +16,9 @@
         font-size: 0.5em;
         font-family: 'B612 Mono', monospace;
       }
+      input#parent {
+        top: -20px;
+      }
       input#child1 {
         position: absolute;
         top: -10px;
@@ -25,37 +28,40 @@
         top: 10px;
       }
       ul {
-         list-style: none;
-         margin-left: 0;
-         padding-left: 1em;
-         text-indent: -1em;
+        list-style: none;
+        margin-left: 1em;
+        padding-left: 2em;
+        text-indent: -2em;
+      }
+      div#branch_box {
+        position: fixed;
+      }
+      div#tree {
+        position: absolute;
+        top: 150px;
       }
 
       @media only screen and (min-device-width: 768px) {
         body {
           font-size: 1.2em;
-          font-family: 'B612 Mono', monospace;
-        }
-        form {
-          position: relative;
         }
         input {
           font-size: 0.8em;
-          font-family: 'B612 Mono', monospace;
         }
         input#child1 {
-          position: absolute;
           top: -15px;
         }
         input#child2 {
-          position: absolute;
           top: 15px;
         }
         ul {
-           list-style: none;
-           margin-left: 0;
-           padding-left: 1em;
-           text-indent: -1em;
+
+        }
+        div#branch_box {
+          /*position: fixed;*/
+        }
+        div#tree {
+          top: 170px;
         }
       }
     </style>

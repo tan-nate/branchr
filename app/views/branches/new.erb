@@ -1,9 +1,14 @@
-<h1>branchr</h1>
+<div id="branch_box">
+  <h1>branchr</h1>
 
-<form action="/branches/new" method="post">
-  <input type="text" name="parent"> < <input type="text" name="child1" id="child1"> <input type="text" name="child2" id="child2">
+  <form action="/branches/new" method="post">
+    <input type="text" name="parent" id="parent"> < <input type="text" name="child1" id="child1"> <input type="text" name="child2" id="child2">
+    <br>
+    <input type="submit" value="branch!">
+  </form>
   <br>
-  <input type="submit" value="branch!">
-</form>
-<br>
-<%= @tree %>
+</div>
+
+<div id="tree">
+  <%= @tree %>
+</div>
