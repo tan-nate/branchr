@@ -5,5 +5,5 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use BranchesController
-use UsersController
+# use UsersController
 run ApplicationController

@@ -23,6 +23,7 @@ class BranchesController < ApplicationController
     parent.children << child1
     parent.children << child2
 
+    Branch.find_or_create_by(name: "").destroy
     @tree = Lister.list(Branch.all)
 
     erb :'branches/new'

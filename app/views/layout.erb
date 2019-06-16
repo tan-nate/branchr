@@ -1,16 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width">
     <title>branchr</title>
     <style>
-      h1 {
-        font-size: 100px;
-      }
-      input {
-        font-size: 25px;
+      body {
+        font-size: 1em;
       }
       form {
-        font-size: 30px;
+        position: relative;
+      }
+      input {
+        font-size: 0.5em;
+      }
+      input#child1 {
+        position: absolute;
+        top: -10px;
+      }
+      input#child2 {
+        position: absolute;
+        top: 10px;
+      }
+
+      @media only screen and (min-device-width: 768px) {
+        body {
+          font-size: 1.2em;
+        }
+        form {
+          position: relative;
+        }
+        input {
+          font-size: 0.8em;
+        }
+        input#child1 {
+          position: absolute;
+          top: -15px;
+        }
+        input#child2 {
+          position: absolute;
+          top: 15px;
+        }
       }
     </style>
   </head>
