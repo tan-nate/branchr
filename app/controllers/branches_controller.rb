@@ -13,11 +13,14 @@ class BranchesController < ApplicationController
   end
 
   post '/branches' do
-    child1 = Branch.create(name: params[:child1], user: current_user)
-    child2 = Branch.create(name: params[:child2], user: current_user)
-    parent = Branch.create(name: params[:parent], user: current_user)
+    # binding.pry
+    child1 = Branch.find_or_create_by(name: params[:child1])
+    child2 = Branch.find_or_create_by(name: params[:child2])
+    parent = Branch.find_or_create_by(name: params[:parent])
     parent.children << child1
     parent.children << child2
+
+    @tree = Lister.list(Branch.all)
 
     erb :'branches/new'
   end
