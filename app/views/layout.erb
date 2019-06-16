@@ -2,16 +2,19 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width">
+    <link href="https://fonts.googleapis.com/css?family=B612+Mono&display=swap" rel="stylesheet">
     <title>branchr</title>
     <style>
       body {
         font-size: 1em;
+        font-family: 'B612 Mono', monospace;
       }
       form {
         position: relative;
       }
       input {
         font-size: 0.5em;
+        font-family: 'B612 Mono', monospace;
       }
       input#child1 {
         position: absolute;
@@ -21,16 +24,24 @@
         position: absolute;
         top: 10px;
       }
+      ul {
+         list-style: none;
+         margin-left: 0;
+         padding-left: 1em;
+         text-indent: -1em;
+      }
 
       @media only screen and (min-device-width: 768px) {
         body {
           font-size: 1.2em;
+          font-family: 'B612 Mono', monospace;
         }
         form {
           position: relative;
         }
         input {
           font-size: 0.8em;
+          font-family: 'B612 Mono', monospace;
         }
         input#child1 {
           position: absolute;
@@ -39,6 +50,12 @@
         input#child2 {
           position: absolute;
           top: 15px;
+        }
+        ul {
+           list-style: none;
+           margin-left: 0;
+           padding-left: 1em;
+           text-indent: -1em;
         }
       }
     </style>

@@ -3,7 +3,7 @@ class Hash
   def to_html
     [
       '<ul class="tree">',
-      map { |k, v| ["<li><strong>#{k.name}</strong>", v.respond_to?(:to_html) ? v.to_html : "<span>#{v.name}</span></li>"] },
+      map { |k, v| ["<li>⊢ #{k.name}</strong>", v.respond_to?(:to_html) ? v.to_html : "<span>#{v.name}</span></li>"] },
       '</ul>'
     ].join
   end
