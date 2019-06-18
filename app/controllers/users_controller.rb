@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    if logged_in?
+    if logged_in
       redirect '/branches/new'
     else
       erb :'users/login'

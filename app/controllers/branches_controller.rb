@@ -5,9 +5,9 @@ class BranchesController < ApplicationController
 
   get '/branches/new' do
     #binding.pry
-    @logged_in
+    @logged_in = logged_in
     if logged_in
-      @current_user
+      @current_user = current_user
     end
     community = Tree.find_by(name: "community", user: nil)
     @tree = Lister.list(community.branches)
@@ -44,5 +44,9 @@ class BranchesController < ApplicationController
     #binding.pry
 
     erb :'branches/new'
+  end
+
+  get '/branches/:slug' do
+
   end
 end
