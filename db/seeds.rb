@@ -18,3 +18,7 @@ legs = Branch.create(name: "legs", tree: furniture)
 surface = Branch.create(name: "surface", tree: furniture)
 table.children << legs
 table.children << surface
+
+# COMMUNITY TREE
+
+community = Tree.create(name: community)

@@ -4,12 +4,11 @@ class BranchesController < ApplicationController
   end
 
   get '/branches/new' do
-    # if logged_in?
-    #   @tree = Lister.list(Branch.all)
-    #   erb :'branches/new'
-    # else
-    #   redirect '/login'
-    # end
+    #binding.pry
+    @logged_in = logged_in
+    if logged_in
+      @current_user = current_user
+    end
 
     @tree = Lister.list(Branch.all)
     erb :'branches/new'
