@@ -22,16 +22,22 @@ class BranchesController < ApplicationController
     parent = Branch.find_or_create_by(name: params[:parent].downcase.match(/[a-z]+/).to_s)
     #binding.pry
 
-    nilly.children << parent
-    nilly.children << child1
-    nilly.children << child2
+    # NILLY FUNCTION
+    # nilly.children << parent
+    # nilly.children << child1
+    # nilly.children << child2
+    #
+    # if Branch.find_by(name: "")
+    #   Branch.find_by(name: "").destroy
+    # end
+    # NILLY FUNCTION
+
+    parent.children << child1
+    parent.children << child2
 
     if Branch.find_by(name: "")
       Branch.find_by(name: "").destroy
     end
-
-    parent.children << child1
-    parent.children << child2
 
     @tree = Lister.list(Branch.all)
     #binding.pry
