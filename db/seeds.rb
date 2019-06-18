@@ -22,3 +22,18 @@ table.children << surface
 # COMMUNITY TREE
 
 community = Tree.create(name: community)
+
+sofa2 = Branch.create(name: "sofa", tree: community)
+table2 = Branch.create(name: "table", tree: community)
+living_room2.children << sofa2
+living_room2.children << table2
+
+chair2 = Branch.create(name: "chair", tree: community)
+couch2 = Branch.create(name: "couch2", tree: community)
+sofa2.children << chair2
+sofa2.children << couch2
+
+legs2 = Branch.create(name: "legs", tree: community)
+surface2 = Branch.create(name: "surface", tree: community)
+table2.children << legs2
+table2.children << surface2
