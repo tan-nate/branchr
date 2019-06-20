@@ -4,7 +4,7 @@ class BranchesController < ApplicationController
   end
 
   get '/branches/new' do
-    binding.pry
+    #binding.pry
     @logged_in = logged_in
     if logged_in
       @current_user = current_user

@@ -50,7 +50,8 @@ class UsersController < ApplicationController
 
   post '/:slug' do
     @user = params[:slug]
-    @tree = @user.trees.find_by(name: params[:tree])
+    tree = @user.trees.find_by(name: params[:tree])
+    @tree = Lister.list(tree.branches)
     erb :'users/show'
   end
 end
