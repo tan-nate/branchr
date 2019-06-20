@@ -1,6 +1,6 @@
 <h1><%= @user.username %></h1>
 
-<form action="/<%= @user.slug %>" method="POST">
+<form action="/users/<%= @user.slug %>" method="POST">
   <select name="tree">
     <% @user.trees.each do |tree| %>
       <option value="<%= tree.name %>"><%= tree.name %></option>
@@ -16,10 +16,10 @@
 
 <%# binding.pry %>
 <% if @tree_name %>
-  <%= @tree_list %>
-  <form action="/<%= @user.slug %>/<%= @tree_name.slug %>" method="post">
+  <form action="/users/<%= @user.slug %>/<%= @tree_name.slug %>" method="post">
     <input type="text" name="parent" id="parent"> < <input type="text" name="child1" id="child1"> <input type="text" name="child2" id="child2">
     <br>
     <input type="submit" value="branch!">
   </form>
+  <%= @tree_show %>
 <% end %>
