@@ -59,7 +59,8 @@ class UsersController < ApplicationController
   get '/:slug/:tree' do
     #binding.pry
     @user = User.find_by_slug(params[:slug])
-    @tree = @user.trees.find_by_slug(params[:tree])
+    tree = @user.trees.find_by_slug(params[:tree])
+    @tree = Lister.list(tree.branches)
     erb :'users/show'
   end
 end
