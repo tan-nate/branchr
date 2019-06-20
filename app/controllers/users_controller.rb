@@ -63,4 +63,11 @@ class UsersController < ApplicationController
     @tree_show = Lister.list(@tree_name.branches)
     erb :'users/show'
   end
+
+  post '/users/:slug/:tree' do
+    @user = User.find_by_slug(params[:slug])
+    @tree_name = @user.trees.find_by_slug(params[:tree])
+    @tree_show = Lister.list(@tree_name.branches)
+    erb :'users/show'
+  end
 end

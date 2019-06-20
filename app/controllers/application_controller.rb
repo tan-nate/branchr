@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     #binding.pry
-    redirect '/branches/new'
+    redirect '/community'
   end
 
   helpers do
