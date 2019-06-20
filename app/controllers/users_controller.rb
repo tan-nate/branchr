@@ -51,6 +51,22 @@ class UsersController < ApplicationController
   post '/users/:slug' do
     user = User.find_by_slug(params[:slug])
     tree = user.trees.find_by(name: params[:tree])
+    if params[:tree] == "new_tree"
+      redirect "/users/#{user.slug}/new"
+    end
+
+    redirect "/users/#{user.slug}/#{tree.slug}"
+  end
+
+  get '/users/:slug/new' do
+    @user = User.find_by_slug(params[:slug])
+    erb :'users/new'
+  end
+
+  post '/users/:slug/new' do
+    user = User.find_by_slug(params[:slug])
+    tree = user.trees.find_or_create_by(name: params[:tree])
+
     redirect "/users/#{user.slug}/#{tree.slug}"
   end
 
