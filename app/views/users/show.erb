@@ -1,8 +1,6 @@
 <h1><%= @user.username %></h1>
 
 <form action="/<%= @user.slug %>" method="POST">
-  <input type="submit" value="choose tree">
-  <br>
   <select name="tree">
     <% @user.trees.each do |tree| %>
       <option value="<%= tree.name %>"><%= tree.name %></option>
@@ -10,11 +8,16 @@
     <option value="new_tree">new tree</option>
     <!-- <option value="volvo">Volvo</option> -->
   </select>
+  <br>
+  <input type="submit" value="choose tree">
 </form>
+<br>
+<br>
 
-<% if @tree %>
-  <%= @tree %>
-  <form action="/<%= @user.slug %>/<%= @tree.slug %>" method="post">
+<%# binding.pry %>
+<% if @tree_name %>
+  <%= @tree_list %>
+  <form action="/<%= @user.slug %>/<%= @tree_name.slug %>" method="post">
     <input type="text" name="parent" id="parent"> < <input type="text" name="child1" id="child1"> <input type="text" name="child2" id="child2">
     <br>
     <input type="submit" value="branch!">

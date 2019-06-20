@@ -2,12 +2,12 @@ natedogg = User.create(username: "natedogg", password: "whatup")
 
 furniture = Tree.create(name: "furniture", user: natedogg)
 
-living_room = Branch.create(name: "living room", tree: furniture)
+room = Branch.create(name: "room", tree: furniture)
 
 sofa = Branch.create(name: "sofa", tree: furniture)
 table = Branch.create(name: "table", tree: furniture)
-living_room.children << sofa
-living_room.children << table
+room.children << sofa
+room.children << table
 
 chair = Branch.create(name: "chair", tree: furniture)
 couch = Branch.create(name: "couch", tree: furniture)
@@ -23,12 +23,12 @@ table.children << surface
 
 community = Tree.create(name: "community")
 
-living_room2 = Branch.create(name: "living room", tree: community)
+room2 = Branch.create(name: "room", tree: community)
 
 sofa2 = Branch.create(name: "sofa", tree: community)
 table2 = Branch.create(name: "table", tree: community)
-living_room2.children << sofa2
-living_room2.children << table2
+room2.children << sofa2
+room2.children << table2
 
 chair2 = Branch.create(name: "chair", tree: community)
 couch2 = Branch.create(name: "couch", tree: community)
