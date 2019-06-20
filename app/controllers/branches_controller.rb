@@ -4,7 +4,7 @@ class BranchesController < ApplicationController
   end
 
   get '/branches/new' do
-    #binding.pry
+    binding.pry
     @logged_in = logged_in
     if logged_in
       @current_user = current_user
@@ -46,7 +46,8 @@ class BranchesController < ApplicationController
     erb :'branches/new'
   end
 
-  get '/branches/:slug' do
-
+  get '/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    erb :'users/show'
   end
 end
