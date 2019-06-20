@@ -50,10 +50,16 @@ class UsersController < ApplicationController
 
   post '/:slug' do
     #binding.pry
-    @user = User.find_by_slug(params[:slug])
-    tree = @user.trees.find_by(name: params[:tree])
-    @tree = Lister.list(tree.branches)
+    user = User.find_by_slug(params[:slug])
+    tree = user.trees.find_by(name: params[:tree])
+    redirect '/#{user.slug}/#{tree.slug}'
     #binding.pry
+  end
+
+  get '/:slug/:tree' do
+    #binding.pry
+    @user = User.find_by_slug(params[:slug])
+    @tree = @user.trees.find_by_slug(params[:tree])
     erb :'users/show'
   end
 end

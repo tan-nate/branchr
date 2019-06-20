@@ -14,4 +14,9 @@
 
 <% if @tree %>
   <%= @tree %>
+  <form action="/<%= @user.slug %>/<%= @tree.slug %>" method="post">
+    <input type="text" name="parent" id="parent"> < <input type="text" name="child1" id="child1"> <input type="text" name="child2" id="child2">
+    <br>
+    <input type="submit" value="branch!">
+  </form>
 <% end %>
