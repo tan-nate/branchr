@@ -1,7 +1,7 @@
+<p><a href="/community">home</a> / <a href="/trees">browse</a> / <a href="/logout">log out</a>
 <h1><%= @user.username %></h1>
-
-<form action="/users/<%= @user.slug %>" method="POST">
-  <select name="tree">
+<form id="choose_tree" action="/users/<%= @user.slug %>" method="POST">
+  <select id="choose_tree" name="tree">
     <% @user.trees.each do |tree| %>
       <option value="<%= tree.name %>"><%= tree.name %></option>
     <% end %>
@@ -10,7 +10,7 @@
   <br>
   <input type="submit" value="choose tree">
 </form>
-
+<br>
 <% if @tree_name %>
   <h2> <%= @tree_name.name %></h2>
   <form action="/users/<%= @user.slug %>/<%= @tree_name.slug %>" method="post">
