@@ -1,4 +1,4 @@
-class BranchesController < ApplicationController
+class CommunityController < ApplicationController
   get '/community' do
     @logged_in = logged_in
     if logged_in

@@ -6,7 +6,6 @@
       <option value="<%= tree.name %>"><%= tree.name %></option>
     <% end %>
     <option value="new_tree">new tree</option>
-    <!-- <option value="volvo">Volvo</option> -->
   </select>
   <br>
   <input type="submit" value="choose tree">
@@ -14,7 +13,6 @@
 <br>
 <br>
 
-<%# binding.pry %>
 <% if @tree_name %>
   <form action="/users/<%= @user.slug %>/<%= @tree_name.slug %>" method="post">
     <input type="text" name="parent" id="parent"> < <input type="text" name="child1" id="child1"> <input type="text" name="child2" id="child2">

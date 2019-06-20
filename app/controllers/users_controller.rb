@@ -49,15 +49,12 @@ class UsersController < ApplicationController
   end
 
   post '/users/:slug' do
-    #binding.pry
     user = User.find_by_slug(params[:slug])
     tree = user.trees.find_by(name: params[:tree])
     redirect "/users/#{user.slug}/#{tree.slug}"
-    #binding.pry
   end
 
   get '/users/:slug/:tree' do
-    #binding.pry
     @user = User.find_by_slug(params[:slug])
     @tree_name = @user.trees.find_by_slug(params[:tree])
     @tree_show = Lister.list(@tree_name.branches)
@@ -67,7 +64,20 @@ class UsersController < ApplicationController
   post '/users/:slug/:tree' do
     @user = User.find_by_slug(params[:slug])
     @tree_name = @user.trees.find_by_slug(params[:tree])
+
+    child1 = Branch.find_or_create_by(name: params[:child1].downcase.match(/[a-z]+/).to_s, tree: @tree_name)
+    child2 = Branch.find_or_create_by(name: params[:child2].downcase.match(/[a-z]+/).to_s, tree: @tree_name)
+    parent = Branch.find_or_create_by(name: params[:parent].downcase.match(/[a-z]+/).to_s, tree: @tree_name)
+
+    parent.children << child1
+    parent.children << child2
+
+    if Branch.find_by(name: "")
+      Branch.find_by(name: "").destroy
+    end
+
     @tree_show = Lister.list(@tree_name.branches)
+
     erb :'users/show'
   end
 end
