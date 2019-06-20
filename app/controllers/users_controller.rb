@@ -42,4 +42,15 @@ class UsersController < ApplicationController
     session.clear
     redirect '/login'
   end
+
+  get '/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    erb :'users/show'
+  end
+
+  post '/:slug' do
+    @user = params[:slug]
+    @tree = @user.trees.find_by(name: params[:tree])
+    erb :'users/show'
+  end
 end

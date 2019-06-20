@@ -5,6 +5,7 @@
     <% @user.trees.each do |tree| %>
       <option value="<%= tree.name %>"><%= tree.name %></option>
     <% end %>
+    <option value="new_tree">new tree</option>
     <!-- <option value="volvo">Volvo</option> -->
   </select>
   <br><br>
