@@ -1,0 +1,12 @@
+<h1><%= @user.username %></h1>
+
+<form action="/<%= @user.slug %>">
+  <select name="tree">
+    <% @user.trees.each do |tree| %>
+      <option value="<%= tree.name %>"><%= tree.name %></option>
+    <% end %>
+    <!-- <option value="volvo">Volvo</option> -->
+  </select>
+  <br><br>
+  <input type="submit">
+</form>
