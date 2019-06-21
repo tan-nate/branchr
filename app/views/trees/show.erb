@@ -1,6 +1,7 @@
+<p><a href="/community">home</a> / <a href="/trees">browse</a> / <a href="/logout">log out</a>
 <% @trees.each do |tree| %>
   <% if tree.user %>
-    <h3 class="tree_list"><%= tree.name %></h3>
-    <p class="tree_list">by <%= tree.user.username %></p>
+    <h3 class="tree_list"><a href="/users/<%= tree.user.slug %>/<%= tree.slug %>"><%= tree.name %></a></h3>
+    <p class="tree_list">by <a href="/users/<%= tree.user.slug %>"><%= tree.user.username %></a></p>
   <% end %>
 <% end %>
