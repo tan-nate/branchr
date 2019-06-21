@@ -1,3 +1,4 @@
+<%# binding.pry %>
 <p><a href="/community">home</a> / <a href="/trees">browse</a> / <a href="/logout">log out</a>
 <h1><%= @user.username %></h1>
 <form id="choose_tree" action="/users/<%= @user.slug %>" method="POST">
@@ -13,10 +14,12 @@
 <br>
 <% if @tree_name %>
   <h2> <%= @tree_name.name %></h2>
-  <form action="/users/<%= @user.slug %>/<%= @tree_name.slug %>" method="post">
-    <input type="text" name="parent" id="parent"> < <input type="text" name="child1" id="child1"> <input type="text" name="child2" id="child2">
-    <br>
-    <input type="submit" value="branch!">
-  </form>
+  <% if @user == @current_user %>
+    <form action="/users/<%= @user.slug %>/<%= @tree_name.slug %>" method="post">
+      <input type="text" name="parent" id="parent"> < <input type="text" name="child1" id="child1"> <input type="text" name="child2" id="child2">
+      <br>
+      <input type="submit" value="branch!">
+    </form>
+  <% end %>
   <%= @tree_show %>
 <% end %>

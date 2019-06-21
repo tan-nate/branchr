@@ -74,6 +74,7 @@ class UsersController < ApplicationController
     @user = User.find_by_slug(params[:slug])
     @tree_name = @user.trees.find_by_slug(params[:tree])
     @tree_show = Lister.list(@tree_name.branches)
+    @current_user = current_user
     erb :'users/show'
   end
 
