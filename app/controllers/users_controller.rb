@@ -81,6 +81,7 @@ class UsersController < ApplicationController
 
   post '/users/:slug/:tree' do
     @user = User.find_by_slug(params[:slug])
+    @current_user = current_user
     @tree_name = @user.trees.find_by_slug(params[:tree])
 
     child1 = Branch.find_or_create_by(name: params[:child1].downcase.match(/[a-z]+/).to_s, tree: @tree_name)
