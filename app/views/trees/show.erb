@@ -1,0 +1,6 @@
+<% @trees.each do |tree| %>
+  <% if tree.user %>
+    <h3 class="tree_list"><%= tree.name %></h3>
+    <p class="tree_list">by <%= tree.user.username %></p>
+  <% end %>
+<% end %>

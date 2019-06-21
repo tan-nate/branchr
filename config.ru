@@ -6,4 +6,5 @@ end
 
 use CommunityController
 use UsersController
+use TreesController
 run ApplicationController
