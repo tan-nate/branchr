@@ -1,7 +1,7 @@
 <div id="branch_box">
   <% if @logged_in %>
     <%# binding.pry %>
-    <p><a href="/users/<%= @current_user.slug %>">my trees</a> / <a href="/trees">browse</a></p>
+    <p><a href="/users/<%= @current_user.slug %>">my trees</a> / <a href="/trees">browse</a> / <a href="/logout">logout</a></p>
   <% else %>
     <p><a href="/login">log in</a> / <a href="/signup">sign up</a></p>
   <% end %>
