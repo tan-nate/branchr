@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 20190615165726) do
   create_table "branches", force: :cascade do |t|
     t.string  "name"
     t.integer "tree_id"
-    t.integer "parent_id"
+    t.string  "ancestry"
   end
 
-  add_index "branches", ["parent_id"], name: "index_branches_on_parent_id"
+  add_index "branches", ["ancestry"], name: "index_branches_on_ancestry"
 
   create_table "trees", force: :cascade do |t|
     t.string  "name"

@@ -21,6 +21,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
+    ancestry (3.0.7)
+      activerecord (>= 3.2.0)
     arel (6.0.4)
     bcrypt (3.1.13)
     bond (0.5.1)
@@ -112,6 +114,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (~> 4.2, >= 4.2.6)
+  ancestry
   bcrypt
   capybara
   database_cleaner!

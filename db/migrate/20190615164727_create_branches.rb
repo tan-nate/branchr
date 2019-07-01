@@ -3,7 +3,7 @@ class CreateBranches < ActiveRecord::Migration
     create_table :branches do |t|
       t.string :name
       t.integer :tree_id
-      t.references :parent, index: true
+      t.string :ancestry, index: true
     end
   end
 end
