@@ -6,18 +6,18 @@ room = Branch.create(name: "room", tree: furniture)
 
 sofa = Branch.create(name: "sofa", tree: furniture)
 table = Branch.create(name: "table", tree: furniture)
-room.children << sofa
-room.children << table
+sofa.parent = room
+table.parent = room
 
 chair = Branch.create(name: "chair", tree: furniture)
 couch = Branch.create(name: "couch", tree: furniture)
-sofa.children << chair
-sofa.children << couch
+chair.parent = sofa
+couch.parent = sofa
 
 legs = Branch.create(name: "legs", tree: furniture)
 surface = Branch.create(name: "surface", tree: furniture)
-table.children << legs
-table.children << surface
+legs.parent = table
+surface.parent = table
 
 # COMMUNITY TREE
 
@@ -27,15 +27,15 @@ room2 = Branch.create(name: "room", tree: community)
 
 sofa2 = Branch.create(name: "sofa", tree: community)
 table2 = Branch.create(name: "table", tree: community)
-room2.children << sofa2
-room2.children << table2
+sofa2.parent = room2
+table2.parent = room2
 
 chair2 = Branch.create(name: "chair", tree: community)
 couch2 = Branch.create(name: "couch", tree: community)
-sofa2.children << chair2
-sofa2.children << couch2
+chair2.parent = sofa2
+couch2.parent = sofa2
 
 legs2 = Branch.create(name: "legs", tree: community)
 surface2 = Branch.create(name: "surface", tree: community)
-table2.children << legs2
-table2.children << surface2
+legs2.parent = table2
+surface2.parent = table2
