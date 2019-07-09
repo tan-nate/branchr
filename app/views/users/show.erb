@@ -1,12 +1,13 @@
-<%# binding.pry %>
-<p><a href="/community">home</a> / <a href="/users/<%= @current_user.slug %>">my trees</a> / <a href="/trees">browse</a> / <a href="/logout">log out</a>
+<p><a href="/community">home</a> / <a href="/trees">browse</a> / <a href="/logout">log out</a>
 <h1><%= @user.username %></h1>
 <form id="choose_tree" action="/users/<%= @user.slug %>" method="POST">
   <select id="choose_tree" name="tree">
     <% @user.trees.each do |tree| %>
       <option value="<%= tree.name %>"><%= tree.name %></option>
     <% end %>
-    <option value="new_tree">new tree</option>
+    <% if @user == @current_user %>
+      <option value="new_tree">new tree</option>
+    <% end %>
   </select>
   <br>
   <input type="submit" value="choose tree">
