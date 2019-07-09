@@ -61,7 +61,11 @@ class UsersController < ApplicationController
 
   get '/users/:slug/new' do
     @user = User.find_by_slug(params[:slug])
-    erb :'users/new'
+    if @user == current_user
+      erb :'users/new'
+    else
+      redirect "/users/#{@user.slug}"
+    end
   end
 
   post '/users/:slug/new' do
