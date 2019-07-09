@@ -103,4 +103,14 @@ class UsersController < ApplicationController
 
     erb :'users/show'
   end
+
+  get '/users/:slug/:tree/delete' do
+    @user = User.find_by_slug(params[:slug])
+    @tree_name = @user.trees.find_by_slug(params[:tree])
+    if @user == current_user
+      erb :'users/delete'
+    else
+      redirect "/users/#{@user.slug}"
+    end
+  end
 end
