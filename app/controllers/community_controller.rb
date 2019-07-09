@@ -10,6 +10,11 @@ class CommunityController < ApplicationController
   end
 
   post '/community' do
+    @logged_in = logged_in
+    if logged_in
+      @current_user = current_user
+    end
+
     community = Tree.find_by(name: "community", user: nil)
 
     child1 = Branch.find_or_create_by(name: params[:child1].downcase.match(/[a-z]+/).to_s, tree: community)
