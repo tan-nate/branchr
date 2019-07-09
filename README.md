@@ -1,1 +1,1 @@
-A Sinatra app that lets users make word trees and view and rate other users' trees. 
+A Sinatra app that lets you make word trees. To run the app, clone this repo. Then run "bundle install", then "shotgun". 
