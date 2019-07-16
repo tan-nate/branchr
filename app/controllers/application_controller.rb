@@ -9,7 +9,6 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    #binding.pry
     redirect '/community'
   end
 
