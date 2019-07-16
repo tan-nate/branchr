@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   post '/signup' do
     user = User.new(username: params[:username], password: params[:password])
-	  if user.username? && user.password_digest?
+	  if user.username? && user.password_digest? && user.unique?
       user.save
       session[:user_id] = user.id
 	    redirect '/community'

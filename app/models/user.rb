@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
       user.slug == slug
     end
   end
+
+  def unique?
+    !self.class.find_by_slug(self.username)
+  end
 end
