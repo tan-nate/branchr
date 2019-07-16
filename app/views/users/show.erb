@@ -21,7 +21,11 @@
       <br>
       <input type="submit" value="branch!">
     </form>
-    <a href="/users/<%= @user.slug %>/<%= @tree_name.slug %>/delete"><button>delete tree</button></a>
+    <!-- <a href="/users/<%= @user.slug %>/<%= @tree_name.slug %>/delete"><button>delete tree</button></a> -->
+    <form method="post" action="/users/<%= @user.slug %>/<%= @tree_name.slug %>">
+      <input id="hidden" type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Tweet">
+    </form>
   <% end %>
   <%= @tree_show %>
 <% end %>

@@ -70,9 +70,12 @@ class UsersController < ApplicationController
 
   post '/users/:slug/new' do
     user = User.find_by_slug(params[:slug])
-    tree = user.trees.find_or_create_by(name: params[:tree])
-
-    redirect "/users/#{user.slug}/#{tree.slug}"
+    if user == current_user
+      tree = user.trees.find_or_create_by(name: params[:tree])
+      redirect "/users/#{user.slug}/#{tree.slug}"
+    else
+      redirect "/users/#{user.slug}"
+    end
   end
 
   get '/users/:slug/:tree' do
@@ -87,24 +90,27 @@ class UsersController < ApplicationController
     @user = User.find_by_slug(params[:slug])
     @current_user = current_user
     @tree_name = @user.trees.find_by_slug(params[:tree])
+    if @user == current_user
+      child1 = Branch.find_or_create_by(name: params[:child1].downcase.match(/[a-z]+/).to_s, tree: @tree_name)
+      child2 = Branch.find_or_create_by(name: params[:child2].downcase.match(/[a-z]+/).to_s, tree: @tree_name)
+      parent = Branch.find_or_create_by(name: params[:parent].downcase.match(/[a-z]+/).to_s, tree: @tree_name)
 
-    child1 = Branch.find_or_create_by(name: params[:child1].downcase.match(/[a-z]+/).to_s, tree: @tree_name)
-    child2 = Branch.find_or_create_by(name: params[:child2].downcase.match(/[a-z]+/).to_s, tree: @tree_name)
-    parent = Branch.find_or_create_by(name: params[:parent].downcase.match(/[a-z]+/).to_s, tree: @tree_name)
+      parent.children << child1
+      parent.children << child2
 
-    parent.children << child1
-    parent.children << child2
+      if Branch.find_by(name: "")
+        Branch.find_by(name: "").destroy
+      end
 
-    if Branch.find_by(name: "")
-      Branch.find_by(name: "").destroy
+      @tree_show = Lister.list(@tree_name.branches)
+
+      erb :'users/show'
+    else
+      erb :'users/show'
     end
-
-    @tree_show = Lister.list(@tree_name.branches)
-
-    erb :'users/show'
   end
 
-  get '/users/:slug/:tree/delete' do
+  delete '/users/:slug/:tree' do
     user = User.find_by_slug(params[:slug])
     tree = user.trees.find_by_slug(params[:tree])
     if user == current_user
