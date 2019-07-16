@@ -110,7 +110,7 @@ class UsersController < ApplicationController
     end
   end
 
-  delete '/users/:slug/:tree' do
+  get '/users/:slug/:tree/delete' do
     user = User.find_by_slug(params[:slug])
     tree = user.trees.find_by_slug(params[:tree])
     if user == current_user
