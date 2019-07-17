@@ -20,5 +20,17 @@ class ApplicationController < Sinatra::Base
     def current_user
       User.find(session[:user_id])
     end
+
+    def redirect_if_not_logged_in
+      if !logged_in
+        redirect '/community'
+      end
+    end
+
+    def redirect_if_not_correct_user(user)
+      if user != current_user
+        redirect "/users/#{user.slug}"
+      end
+    end
   end
 end
