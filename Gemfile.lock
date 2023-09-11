@@ -91,7 +91,7 @@ GEM
       activerecord (>= 3.2)
       sinatra (>= 1.0)
     sqlite3
-    thin (1.7.2)
+    thin
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
       rack (>= 1, < 3)
